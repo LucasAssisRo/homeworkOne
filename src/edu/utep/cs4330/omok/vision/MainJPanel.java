@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author lucasassisrodrigues
+ * @author Lucas Assis Rodrigues and John Ramirez
  */
 public class MainJPanel extends javax.swing.JPanel {
 

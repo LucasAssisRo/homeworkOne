@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author lucasassisrodrigues
+ * @author Lucas Assis Rodrigues and John Ramirez
  */
 public class BoardPanel extends JPanel {
     

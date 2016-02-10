@@ -7,7 +7,7 @@ package edu.utep.cs4330.omok.model;
 
 /**
  *
- * @author lucasassisrodrigues
+ * @author Lucas Assis Rodrigues and John Ramirez
  */
 public class Player {
 

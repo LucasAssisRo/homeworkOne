@@ -9,7 +9,7 @@ import javax.swing.JDialog;
 
 /**
  *
- * @author lucasassisrodrigues
+ * @author Lucas Assis Rodrigues and John Ramirez
  */
 public class OmokDialog extends JDialog {
 

@@ -10,7 +10,7 @@ import javax.swing.JApplet;
 
 /**
  *
- * @author lucasassisrodrigues
+ * @author Lucas Assis Rodrigues and John Ramirez
  */
 public class OmokApplet extends JApplet {
 
