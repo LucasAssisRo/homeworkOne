@@ -39,7 +39,7 @@ public class Board {
      * @return Returns if the player won the game after the token has been
      * placed
      */
-    public boolean placeToken(Player player, int xCor, int yCor) {
+    protected boolean placeToken(Player player, int xCor, int yCor) {
         char token = player.isPlayerOne() ? 'B' : 'W';
         boardMatrix[xCor][yCor] = token;
         xCorArray[0] = xCor;

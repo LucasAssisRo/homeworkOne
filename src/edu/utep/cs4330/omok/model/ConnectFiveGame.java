@@ -31,14 +31,44 @@ public class ConnectFiveGame {
     }
 
     /**
-     * Creates a new board -
-     * Sets the turn as black -
-     * Starts the game
+     * Creates a new board - Sets the turn as black - Starts the game
      */
     public void startNewGame() {
         board = new Board();
         gameStarted = true;
         playerOneTurn = true;
+    }
+
+    /**
+     *
+     * @param xCor The x coordinate that the token is being placed
+     * @param yCor The y coordinate that the token is being placed
+     * @return Returns if the player won the game after the token has been
+     * placed
+     *
+     */
+    public boolean placeToken(int xCor, int yCor) {
+        boolean winState = false;
+        if (board.getBoardMatrix()[xCor][yCor] == ' ') {
+            Player player;
+            if (playerOneTurn) {
+                player = players[0];
+            } else {
+                player = players[1];
+            }
+            playerOneTurn = !playerOneTurn;
+            winState = board.placeToken(player, xCor, yCor);
+            gameStarted = !winState;
+        }
+        return winState;
+    }
+
+    public String getPlayerName() {
+        if (!playerOneTurn) {
+            return players[0].getName();
+        } else {
+            return players[1].getName();
+        }
     }
 
     /**

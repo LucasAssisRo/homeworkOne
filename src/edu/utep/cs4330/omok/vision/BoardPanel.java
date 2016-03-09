@@ -18,11 +18,11 @@ import javax.swing.JPanel;
  * @author Lucas Assis Rodrigues and John Ramirez
  */
 public class BoardPanel extends JPanel {
-    
+
     private Color colorBoard;
     private Color colorLine;
     private ConnectFiveGame connectFiveGame;
-    
+
     /**
      *
      */
@@ -30,7 +30,10 @@ public class BoardPanel extends JPanel {
         colorBoard = new Color(218, 165, 32);
         colorLine = Color.BLACK;
         connectFiveGame = new ConnectFiveGame();
-        
+        addMouseListener();
+    }
+
+    private void addMouseListener() {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -46,25 +49,16 @@ public class BoardPanel extends JPanel {
                     if (e.getY() % 40 > 20) {
                         y++;
                     }
-                    if (connectFiveGame.isPlayerOneTurn()) {
-                        playerIndex = 0;
-                    } else {
-                        playerIndex = 1;
-                    }
-                    if (connectFiveGame.getBoard().getBoardMatrix()[x][y] == ' ') {
-                        if (connectFiveGame.getBoard().placeToken(connectFiveGame.getPlayers()[playerIndex], x, y)) {
-                            repaint();
-                            JOptionPane.showMessageDialog(null, "Player "+(playerIndex + 1) + " won!!!!");
-                            connectFiveGame.setGameStarted(false);
-                        }
-                        connectFiveGame.setPlayerOneTurn(!connectFiveGame.isPlayerOneTurn());
+                    if (connectFiveGame.placeToken(x, y)) {
                         repaint();
+                        JOptionPane.showMessageDialog(null, connectFiveGame.getPlayerName() + " won!!!!");
                     }
+                    repaint();
                 }
             }
         });
     }
-    
+
     /**
      * Event function for starting a new game
      */
@@ -72,7 +66,7 @@ public class BoardPanel extends JPanel {
         connectFiveGame.startNewGame();
         repaint();
     }
-    
+
     /**
      *
      * @return Returns the color of the board
@@ -80,7 +74,7 @@ public class BoardPanel extends JPanel {
     public Color getColorBoard() {
         return colorBoard;
     }
-    
+
     /**
      *
      * @param colorBoard Sets the color of the board
@@ -88,7 +82,7 @@ public class BoardPanel extends JPanel {
     public void setColorBoard(Color colorBoard) {
         this.colorBoard = colorBoard;
     }
-    
+
     /**
      *
      * @return Returns the color of the lines of the board
@@ -96,7 +90,7 @@ public class BoardPanel extends JPanel {
     public Color getColorLine() {
         return colorLine;
     }
-    
+
     /**
      *
      * @param colorLine Sets the color of the lines of the board
@@ -104,7 +98,7 @@ public class BoardPanel extends JPanel {
     public void setColorLine(Color colorLine) {
         this.colorLine = colorLine;
     }
-    
+
     /**
      *
      * @return Returns the instance of the current game
@@ -112,7 +106,7 @@ public class BoardPanel extends JPanel {
     public ConnectFiveGame getConnectFiveGame() {
         return connectFiveGame;
     }
-    
+
     /**
      *
      * @param connectFiveGame Sets the instance of the current game
@@ -120,7 +114,7 @@ public class BoardPanel extends JPanel {
     public void setConnectFiveGame(ConnectFiveGame connectFiveGame) {
         this.connectFiveGame = connectFiveGame;
     }
-    
+
     @Override
     public void paint(Graphics g) {
         super.paint(g); //To change body of generated methods, choose Tools | Templates.
